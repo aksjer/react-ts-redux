@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { timer } from 'rxjs';
 import { bookLoad, bookLoadSuccess } from '../actions/book';
 import Books from '../components/books';
 import isLoading from '../components/isLoading';
@@ -8,7 +7,6 @@ import { BOOKS } from '../datas/book';
 import { Book } from '../models/book';
 import { BookState } from '../reducers/book';
 import { RootState } from '../reducers/root';
-import { BookService } from '../services/book.service';
 
 class BookPage extends Component {
   constructor(public props: any) {
