@@ -8,15 +8,22 @@ import { BOOKS } from '../datas/book';
 import { Book } from '../models/book';
 import { BookState } from '../reducers/book';
 import { RootState } from '../reducers/root';
+import { BookService } from '../services/book.service';
 
 class BookPage extends Component {
+  private bookService: BookService;
+
   constructor(public props: any) {
     super(props);
+    this.bookService = new BookService();
   }
 
   componentDidMount() {
     this.props.bookLoad();
-    timer(3000).subscribe(() => this.props.bookLoadSuccess(BOOKS));
+
+    this.bookService
+      .getAll()
+      .subscribe(() => this.props.bookLoadSuccess(BOOKS));
   }
 
   displayActiveBook(book: Book) {
